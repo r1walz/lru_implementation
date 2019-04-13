@@ -40,12 +40,10 @@ PTE find_lru_page_entry(PTE **page_table, int size)
 	}
 
 	for (int i = 0; i < size; ++i) {
-		for (int j = i; j < size; ++j) {
-			if (page_table[j]->is_present &&
-				(page_table[j]->access_time < min_page_entry->access_time))
-			{
-				min_page_entry = page_table[j];
-			}
+		if (page_table[i]->is_present &&
+			(page_table[i]->access_time < min_page_entry->access_time))
+		{
+			min_page_entry = page_table[i];
 		}
 	}
 

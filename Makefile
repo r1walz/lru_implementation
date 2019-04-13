@@ -1,12 +1,12 @@
 CC='g++'
 
-all: aging_register second_chance stack counter
+all: aging_register clock stack counter
 
 aging_register: aging_register.cpp
 	$(CC) aging_register.cpp -o aging_register
 
-second_chance: second_chance.cpp
-	$(CC) second_chance.cpp -o second_chance
+clock: clock.cpp
+	$(CC) clock.cpp -o clock
 
 stack: stack.cpp
 	$(CC) stack.cpp -o stack
@@ -20,9 +20,9 @@ clean:
 		rm aging_register; \
 		echo 'removed aging_register'; \
 	fi
-	@if test -n "$(wildcard second_chance)"; then \
-		rm second_chance; \
-		echo 'removed second_chance'; \
+	@if test -n "$(wildcard clock)"; then \
+		rm clock; \
+		echo 'removed clock'; \
 	fi
 	@if test -n "$(wildcard stack)"; then \
 		rm stack; \

@@ -42,25 +42,31 @@ int aging_register_algo(std::vector<int> &traces, int frame_size)
 	int faults = 0;
 	int registers[frame_size] = {0};
 	std::vector<int> frames(frame_size, -1);
-	std::vector<int>::iterator pos;
+	int pos;
+	std::vector<int> PTE (traces.size(), -1);
 
 	for (int t = 0; t < traces.size(); ++t)
 	{
-		pos = find(frames.begin(), frames.end(), traces[t]);
+		pos = PTE[traces[t]];
 
 		for (int i = 0; i < frame_size; ++i)
 		{
 			registers[i] >>= 1;
 		}
 
-		if (pos == frames.end())
+		if (pos == -1)
 		{
-			pos = frames.begin() + find_LRU_page(registers, frame_size);
-			frames[pos - frames.begin()] = traces[t];
-			++faults;
+			pos = find_LRU_page(registers, frame_size);
+			if (frames[pos] != -1)
+			{
+				PTE[frames[pos]] = -1;
+			}
+			frames[pos] = traces[t];
+			PTE[traces[t]] = pos;
+			faults ++;
 		}
 
-		registers[pos - frames.begin()] |= 128;
+		registers[pos] |= 128;
 	}
 
 	return faults;

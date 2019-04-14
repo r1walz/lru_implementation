@@ -1,6 +1,7 @@
 # Analysis of Different Page Replacement Algorithms
 
 ## Introduction
+
 In Operating Systems that use paging for memory management, page
 replacement algorithm are needed to decide which page should be
 replaced when new page comes in. Whenever, a new page is referred and
@@ -10,6 +11,7 @@ replace. The target of all algorithms is to reduce the number of
 page-faults.
 
 ## Least Recently Used Page Replacement
+
 In Least Recently Used algorithm, we use the recent past as an
 approximation of the near future, then we can replace the page that has
 not been used for the longest period of time.
@@ -22,6 +24,7 @@ rather than forward.
 There are different methods to implement LRU:-
 
 ### Counter Method
+
 In the simplest case, we associate with each page-table entry a
 time-of-use field and add to the CPU a logical clock or counter. The
 clock is incremented for every memory reference. Whenever a reference
@@ -35,12 +38,14 @@ times must also be maintained when page tables are changed (due to CPU
 scheduling). Overflow of the clock must be considered.
 
 #### Complexity Analysis
+
 Time complexity of `Find` operation is O(1).
 
 Time complexity of `Replace` operation is O(n) where n is the total
 number of pages.
 
 ### Stack Method
+
 Another approach to implementing LRU replacement is to keep a stack of
 page numbers. Whenever a page is referenced, it is removed from the
 stack and put on the top. In this way, the most recently used page is
@@ -56,11 +61,13 @@ appropriate for the software or microcode implementations of the LRU
 replacement.
 
 #### Complexity Analysis
+
 Time complexity of `Find` operation is O(1).
 
 Time complexity of `Replace` operation is O(1).
 
 ### Aging Register Method
+
 We associate with each page-table entry a counter field and
 additionally store a n-bit array of R bits. Here R stands for reference
 and reference bit is set by the hardware whenever that page is
@@ -76,6 +83,7 @@ one page is referenced in one clock cycle. Otherwise, this method would
 be an approximation of LRU.
 
 #### Complexity Analysis
+
 Time complexity of `Find` operation is O(n) where n is the total number of pages.
 
 Time complexity of `Replace` operation is O(n) where n is the total number of pages.
@@ -83,6 +91,7 @@ Time complexity of `Replace` operation is O(n) where n is the total number of pa
 ## Aproximate LRU Page Replacement
 
 ### Clock Method
+
 We associate with every page-table entry a R bit. When a page has been
 selected, however, we inspect its reference bit. If the value is 0, we
 proceed to replace this page; but if the reference bit is set to 1, we
@@ -99,6 +108,7 @@ page is replaced, and the new page is insertedin the circular queue in
 that position.
 
 #### Complexity Analysis
+
 Time complexity of `Find` operation is O(1).
 
 Time complexity of `Replace` operation is O(n).

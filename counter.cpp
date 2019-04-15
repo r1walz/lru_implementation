@@ -73,8 +73,6 @@ int counter_algo(std::vector<int> &traces, int frame_size)
 int main(int argc, char *argv[])
 {
 	std::vector<int> traces = read_traces(argv[1]);
-
-	std::cout << "Total Page Faults = "
-	<< counter_algo(traces, std::stoi(argv[2]))
-	<< std::endl;
+	int faults = counter_algo(traces, std::stoi(argv[2]));
+	std::cout << faults << std::endl;
 }

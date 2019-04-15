@@ -75,8 +75,7 @@ int aging_register_algo(std::vector<int> &traces, int frame_size)
 int main(int argc, char *argv[])
 {
 	std::vector<int> traces = read_traces(argv[1]);
+	int faults = aging_register_algo(traces, std::stoi(argv[2]));
 
-	std::cout << "Total Page Faults = "
-	<< aging_register_algo(traces, std::stoi(argv[2]))
-	<< std::endl;
+	std::cout << faults << std::endl;
 }

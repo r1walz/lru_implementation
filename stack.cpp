@@ -61,6 +61,7 @@ int main(int argc, char *argv[])
 {
 	std::list<int> traces = read_traces(argv[1]);
 	int frame_size = std::stoi(argv[2]);
+	int faults = stack_algo(traces, frame_size);
 
-	std::cout << stack_algo(traces, frame_size) << std::endl;
+	std::cout << faults << std::endl;
 }

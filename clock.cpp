@@ -93,9 +93,7 @@ int main(int argc, char *argv[])
 			std::istreambuf_iterator<char>());
 	faults = clock_algo(s, frame_size);
 
-	std::cout << "No. of page faults is : "
-	<< faults
-	<< std::endl;
+	std::cout << faults << std::endl;
 
 	fin.close();
 

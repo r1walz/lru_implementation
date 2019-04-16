@@ -37,6 +37,11 @@ the time-of-use field in the page-table) for each memory access. The
 times must also be maintained when page tables are changed (due to CPU
 scheduling). Overflow of the clock must be considered.
 
+#### Page faults vs number of Frames
+<div align="center">
+    <img src="_assets/counter.png">
+</div>
+
 #### Complexity Analysis
 
 Time complexity of `Find` operation is O(1).
@@ -60,6 +65,11 @@ the stack, which is the LRU page. This approach is particularly
 appropriate for the software or microcode implementations of the LRU
 replacement.
 
+#### Page faults vs number of Frames
+<div align="center">
+    <img src="_assets/stack.png">
+</div>
+
 #### Complexity Analysis
 
 Time complexity of `Find` operation is O(1).
@@ -81,6 +91,11 @@ replacement.
 > Note: Aging Register method only behaves like LRU if there is only
 one page is referenced in one clock cycle. Otherwise, this method would
 be an approximation of LRU.
+
+#### Page faults vs number of Frames
+<div align="center">
+    <img src="_assets/aging-register.png">
+</div>
 
 #### Complexity Analysis
 
@@ -107,8 +122,20 @@ advances, it clears the reference bits. Once a victim is found, the
 page is replaced, and the new page is insertedin the circular queue in
 that position.
 
+#### Page faults vs number of Frames
+<div align="center">
+    <img src="_assets/clock.png">
+</div>
+
 #### Complexity Analysis
 
 Time complexity of `Find` operation is O(1).
 
 Time complexity of `Replace` operation is O(n).
+
+## Execution time Analysis
+
+<div align="center">
+    <img src="_assets/exec_stats.png">
+</div>
+

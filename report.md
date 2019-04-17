@@ -1,5 +1,15 @@
 # Analysis of Different Page Replacement Algorithms
 
+Enr no. | Name
+-|-
+16115028 | Arihant Jain
+17114050 | Narendra Patel
+17114064 | Rohit Ashiwal
+16116043 | Parla Surendra Mani Kumar
+16116064 | Shrey Aggarwal
+16118078 | Shubhanshu Agarwal
+16116069 | Suyash Mahar
+
 ## Introduction
 
 In Operating Systems that use paging for memory management, page
@@ -44,17 +54,21 @@ scheduling). Overflow of the clock must be considered.
 
 #### Complexity Analysis
 
-Time complexity of `Find` operation is O(1).
+For the `Find` operation, one needs to perform a lookup at particular
+index in the Page Table. Thus the Time complexity of this opration is
+O(1).
 
-Time complexity of `Replace` operation is O(n) where n is the total
-number of pages.
+For the `Replace` operation, one needs to perform a linear search
+through the page table to find the page with lowest value of `counter`
+field. Thus the Time complexity of this operation is O(n) where n is
+the total number of pages.
 
 ### Stack Method
 
 Another approach to implementing LRU replacement is to keep a stack of
 page numbers. Whenever a page is referenced, it is removed from the
 stack and put on the top. In this way, the most recently used page is
-always at the top of the stack, and the least recently useed used page
+always at the top of the stack, and the least recently used page
 is always at the bottom. Because entries must be removed from the
 middle of the stack, it is best to implement this approach by using a
 doubly linked list with a head pointer and a tail pointer. Removing a
@@ -72,9 +86,15 @@ replacement.
 
 #### Complexity Analysis
 
-Time complexity of `Find` operation is O(1).
+For the `Find` operation, one needs to perform a linear search through
+the stack or doubly-linked list to find a page with requested page
+number. Thus the Time complexity of this operation is O(n) where n is
+the number of pages in the stack.
+> Note: We can use combination of `map` and `Set` to achieve complexity of O(log(n))
 
-Time complexity of `Replace` operation is O(1).
+For the `Replace` operation, one needs to updates the tail pointer such
+that it points to second page from the bottom of the stack. Thus the
+Time complexity of this operation is O(1).
 
 ### Aging Register Method
 
@@ -99,9 +119,15 @@ be an approximation of LRU.
 
 #### Complexity Analysis
 
-Time complexity of `Find` operation is O(n) where n is the total number of pages.
+For the `Find` operation, one needs to update the registers of every
+page. In the worst case, one may need to scan through (n-1) nodes to
+find the page. Thus the Time complexity of this operation is O(n) where
+n is the total number of pages.
 
-Time complexity of `Replace` operation is O(n) where n is the total number of pages.
+For the `Replace` operation, one needs to perform a linear search
+through the page table to find the page with lowest value of
+aging-register. Thus the Time complexity of this operation is O(n)
+where n is the total number of pages.
 
 ## Aproximate LRU Page Replacement
 
@@ -129,9 +155,17 @@ that position.
 
 #### Complexity Analysis
 
-Time complexity of `Find` operation is O(1).
+For the `Find` operation, one needs to perform a linear search through
+the circular array to find the page with the requested page number. In
+the worst case, one may need to scan through (n-1) nodes to find the
+page. Thus the Time complexity of this operation is O(n) where n is the
+total number of pages.
 
-Time complexity of `Replace` operation is O(n).
+For the `Replace` operation, one needs to perform a linear search
+through the circular queue to find a page with R bit 0. In the worst
+case, one may need to scan through (n-1) nodes to find the page. Thus
+the Time complexity of this operation is O(n) where n is the total
+number of pages.
 
 ## Execution time Analysis
 

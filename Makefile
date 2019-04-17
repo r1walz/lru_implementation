@@ -1,18 +1,18 @@
 CC='g++'
-
+SRC_DIR=./src
 all: aging_register clock stack counter
 
-aging_register: aging_register.cpp
-	$(CC) aging_register.cpp -o aging_register
+aging_register: $(SRC_DIR)/aging_register.cpp
+	$(CC) $(SRC_DIR)/aging_register.cpp -o aging_register
 
-clock: clock.cpp
-	$(CC) clock.cpp -o clock
+clock: $(SRC_DIR)/clock.cpp
+	$(CC) $(SRC_DIR)/clock.cpp -o clock
 
-stack: stack.cpp
-	$(CC) stack.cpp -o stack
+stack: $(SRC_DIR)/stack.cpp
+	$(CC) $(SRC_DIR)/stack.cpp -o stack
 
-counter: counter.cpp
-	$(CC) counter.cpp -o counter
+counter: $(SRC_DIR)/counter.cpp
+	$(CC) $(SRC_DIR)/counter.cpp -o counter
 
 
 clean:

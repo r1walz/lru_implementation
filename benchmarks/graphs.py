@@ -7,7 +7,7 @@ execs = ['aging_register', 'stack', 'counter', 'clock']
 
 def faults_graphs():
         for binary in execs:
-                cmd = './{} {}_traces '.format(binary, binary)
+                cmd = '../{} {}_traces '.format(binary, binary)
                 x, y = list(), list()
 
                 for i in range(2, 7, 1):
@@ -32,7 +32,7 @@ def exec_time_graph():
         print('done')
 
         for binary in execs:
-                cmd = './{} traces '.format(binary)
+                cmd = '../{} traces '.format(binary)
                 all_time = list()
 
                 for i in range(2, 7, 1):
